@@ -1,25 +1,16 @@
 (function() {
 
   module.exports = {
-    defaultModule: 'todo',
+    defaultModule: 'options',
     modules: {
-      todo: {
-        path: 'modules/todo',
-        name: 'TodoModule',
-        url: '/app/todo/view',
-        state: 'app.todo',
-        label: 'Todos',
-        tooltip: 'Access your todos',
-        icon: 'toc'
-      },
-      activities: {
-        path: 'modules/activities',
-        name: 'ActivityModule',
-        url: '/app/activities/view',
-        state: 'app.activities',
-        label: 'Activities',
-        tooltip: 'Access your activities',
-        icon: 'import_export'
+      options: {
+        path: 'modules/options',
+        name: 'OptionsModule',
+        url: '/app/options/view',
+        state: 'app.options',
+        label: 'Options',
+        tooltip: '',
+        icon: 'settings'
       }
     }
   };

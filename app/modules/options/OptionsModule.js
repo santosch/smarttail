@@ -2,7 +2,7 @@
 
   'use strict';
 
-  function ActivityModule(config) {
+  function OptionsModule(config) {
 
     var moduleConfig = config;
 
@@ -11,10 +11,10 @@
 
         $stateProvider
           .state(`${moduleConfig.state}`, {
-            url: '/activities',
+            url: '/options',
             views: {
               'module': {
-                templateUrl: `${moduleConfig.path}/activities.html`
+                templateUrl: `${moduleConfig.path}/options.html`
               },
               'header@app': {
                 template: `${moduleConfig.label}`
@@ -25,17 +25,17 @@
             url: '/view',
             views: {
               'content': {
-                templateUrl: `${moduleConfig.path}/views/activities.view.html`,
-                controller: 'ActivitiesViewController as ctl'
+                templateUrl: `${moduleConfig.path}/views/options.view.html`,
+                controller: 'OptionsViewController as ctl'
               }
             }
           });
       });
 
-    var ActivitiesViewController = require('./controllers/ActivitiesViewController');
-    angular.module('electron-app').controller('ActivitiesViewController', ['$scope', '$state', '$q', 'ActivityDataService', ActivitiesViewController]);
+    var OptionsViewController = require('./controllers/OptionsViewController');
+    angular.module('electron-app').controller('OptionsViewController', ['$scope', '$state', '$q', OptionsViewController]);
   }
 
-  module.exports = ActivityModule;
+  module.exports = OptionsModule;
 
 })(global.angular);

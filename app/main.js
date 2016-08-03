@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('electron-app', ['ngMaterial', 'ngSanitize', 'ui.router', 'ngAnimate', 'angular-timeline', 'angular-centered'])
+  angular.module('electron-app', ['ngMaterial', 'ngSanitize', 'ui.router', 'ngAnimate', 'angular-centered'])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('teal')
@@ -38,8 +38,6 @@
     ]);
 
   var PouchDBService = require('./shell/services/PouchDBService');
-  var ActivityDataService = require('./shell/services/ActivityDataService');
-  var ActivityService = require('./shell/services/ActivityService');
 
   var ModuleProvider = require('./scripts/ModuleProvider');
   var ShellController = require('./shell/controllers/ShellController');
@@ -50,9 +48,7 @@
   angular.module('electron-app').provider('modules', [ModuleProvider]);
 
   angular.module('electron-app').service('PouchDBService', [PouchDBService]);
-  angular.module('electron-app').service('ActivityDataService', ['PouchDBService', ActivityDataService]);
-  angular.module('electron-app').service('ActivityService', ['ActivityDataService', ActivityService]);
 
-  angular.module('electron-app').controller('ShellController', ['$scope', '$log', '$q', '$mdSidenav', '$mdToast', 'modules', 'ActivityService', ShellController]);
+  angular.module('electron-app').controller('ShellController', ['$scope', '$log', '$q', '$mdSidenav', '$mdToast', 'modules', ShellController]);
 
 })(global.angular);

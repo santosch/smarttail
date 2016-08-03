@@ -2,7 +2,7 @@
 
   'use strict';
 
-  function ShellController($scope, $log, $q, $mdSidenav, $mdToast, modulesProvider, ActivityService) {
+  function ShellController($scope, $log, $q, $mdSidenav, $mdToast, modulesProvider) {
 
     var app = require('electron').remote.app;
     var appCfg = app.sysConfig();
@@ -39,45 +39,8 @@
       });
     };
 
-    $scope.createEventFromTemplate = (template, icon, error) => {
-      return ActivityService.createEventFromTemplate(template, icon, error);
-    };
-
-    $scope.setError = (template, icon, error) => {
-      $scope.notify('An error occured!', error.message);
-
-      console.log(error);
-
-      var info = $scope.createEventFromTemplate(template, icon, error);
-      return $scope.writeLog('error', info);
-    };
-
-    $scope.writeLog = (type, info) => {
-
-      var result;
-
-      switch (type) {
-      case 'info':
-        result = ActivityService.addInfo(info);
-        break;
-
-      case 'warning':
-        result = ActivityService.addWarning(info);
-        break;
-
-      case 'error':
-        result = ActivityService.addError(info);
-        break;
-      }
-
-      return result;
-    };
-
     this.initialize = function() {
       this.modules = modulesProvider.modules;
-      return Promise.all([
-        ActivityService.initialize()
-      ]);
     };
 
     this.toggleFullscreen = function() {
@@ -93,9 +56,7 @@
     };
 
     this.closeApp = function() {
-      ActivityService.close().then(() => {
-        app.close();
-      });
+      app.close();
     };
 
     this.sendEvent = (event, arg) => {
