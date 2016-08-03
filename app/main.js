@@ -5,8 +5,9 @@
   angular.module('electron-app', ['ngMaterial', 'ngSanitize', 'ui.router', 'ngAnimate', 'angular-timeline', 'angular-centered'])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
-        .primaryPalette('blue')
-        .accentPalette('grey');
+        .primaryPalette('teal')
+        .accentPalette('cyan')
+        .dark()
     })
     .config(function($stateProvider, $urlRouterProvider) {
 

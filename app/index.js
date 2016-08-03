@@ -37,8 +37,11 @@
     var win = new BrowserWindow({
       width: 1280,
       height: 800,
-      frame: false
+      frame: true
     });
+
+    // disable menubar
+    win.setMenu(null);
 
     win.loadURL('file://' + __dirname + '/main.html');
     win.on('closed', onClosed);
