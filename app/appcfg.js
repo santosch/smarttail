@@ -9,7 +9,6 @@
         url: '/app/logs/view',
         state: 'app.logs',
         label: 'Logs',
-        tooltip: '',
         icon: 'receipt'
       },
       options: {
@@ -18,7 +17,6 @@
         url: '/app/options/view',
         state: 'app.options',
         label: 'Options',
-        tooltip: '',
         icon: 'settings'
       }
     }

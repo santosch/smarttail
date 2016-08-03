@@ -1,3 +1,12 @@
-<div layout="column" layout-align="left top" layout-fill ng-init="ctl.initialize()">
-  <h1>Hello Logs</h1>
+<div layout="row" layout-align="start start">
+  <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+    <md-tab ng-repeat="tab in tabs"
+            label="{{tab.title}}"
+    >
+        <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+          <div ng-bind="tab.content"></div>
+          <br/>
+        </div>
+    </md-tab>
+  </md-tabs>
 </div>
