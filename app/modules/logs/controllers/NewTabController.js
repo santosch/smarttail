@@ -18,7 +18,7 @@
          * opens a file select dialog
          */
         this.selectFile = function() {
-            alert('test');
+            alert('i\'m a teapot');
         };
 
 
