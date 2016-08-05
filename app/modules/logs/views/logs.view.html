@@ -1,11 +1,14 @@
 <div layout="row" layout-align="start start" class="flex layout-fill">
-  <md-tabs md-selected="selectedIndex" class="flex layout-fill" md-border-bottom md-autoselect>
-    <md-tab ng-repeat="tab in tabs"
-            label="{{tab.title}}"
-    >
-        <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+  <md-tabs md-selected="selectedIndex" class="flex layout-fill file-tabs" md-border-bottom md-autoselect>
+    <md-tab ng-repeat="tab in tabs" label="{{tab.title}}">
+        <div class="file-tab file-tab-tab{{$index%4}}">
           <div ng-bind="tab.content"></div>
-          <br/>
+        </div>
+    </md-tab>
+    <!-- New Tab Page -->
+    <md-tab label="+">
+        <div class="new-tab">
+              <ng-include src="'modules/logs/views/logs.newtab.html'"></ng-include>
         </div>
     </md-tab>
   </md-tabs>

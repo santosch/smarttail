@@ -32,8 +32,13 @@
           });
       });
 
+    // View Controller
     var LogsViewController = require('./controllers/LogsViewController');
     angular.module('electron-app').controller('LogsViewController', ['$scope', '$state', '$q', LogsViewController]);
+
+    // New Tab Controller
+    var NewTabController = require('./controllers/NewTabController');
+    angular.module('electron-app').controller('NewTabController', ['$scope', '$state', '$q', NewTabController]);
   }
 
   module.exports = LogsModule;

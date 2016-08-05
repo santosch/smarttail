@@ -1,3 +1,7 @@
 md-tabs {
     flex-grow: 1;
 }
+
+md-tabs.file-tabs .md-tab.md-active {
+    color: #fff;
+}
