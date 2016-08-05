@@ -1,7 +1,7 @@
 (function() {
 
   module.exports = {
-    defaultModule: 'options',
+    defaultModule: 'logs',
     modules: {
       logs: {
         path: 'modules/logs',
