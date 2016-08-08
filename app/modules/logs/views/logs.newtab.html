@@ -1,5 +1,28 @@
 <div class="new-tab-page" ng-controller="NewTabController as ctl" ng-init="ctl.initialize()">
-
-    <button ng-click="ctl.selectFile()">open file</button>
-    Test: {{test}}
+    <md-card md-colors="{background: 'primary'}">
+        <md-card-header class="md-primary">
+            <md-card-header-text>
+                <span class="md-title">
+                    <md-icon>insert_drive_file</md-icon>
+                    Recent Logfiles
+                </span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+            <md-divider ></md-divider>
+            <md-list>
+                <div ng-repeat="row in latestFiles">
+                    <md-list-item ng-click="ctl.openFile(row.doc.path)">
+                        <div class="md-list-item-text">
+                            {{row.doc.path}}
+                        </div>
+                    </md-list-item>
+                    <md-divider ></md-divider>
+                </div>
+            </md-list>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="ctl.selectFile()" class="md-accent">Open Logfile <md-icon>open_in_browser</md-icon> </md-button>
+        </md-card-actions>
+    </md-card>
 </div>

@@ -38,7 +38,7 @@
 
     // New Tab Controller
     var NewTabController = require('./controllers/NewTabController');
-    angular.module('electron-app').controller('NewTabController', ['$scope', '$state', '$q', NewTabController]);
+    angular.module('electron-app').controller('NewTabController', ['$scope', '$state', '$q', 'PouchDBService', NewTabController]);
   }
 
   module.exports = LogsModule;

@@ -5,3 +5,23 @@ md-tabs {
 md-tabs.file-tabs .md-tab.md-active {
     color: #fff;
 }
+
+md-tabs.file-tabs md-tab-content {
+    padding: 16px;
+}
+
+/* new tab page */
+.new-tab-page md-card h2 {
+    padding: 16px;
+    margin: 0;
+}
+.new-tab-page md-card md-card-content {
+    padding: 0;
+}
+.new-tab-page md-list {
+    padding: 0;
+}
+.new-tab-page md-icon {
+    transform: scale(0.87); /* fuck you - who the hell created this, non-matching icons, genius*/
+    transform-origin: left top;
+}

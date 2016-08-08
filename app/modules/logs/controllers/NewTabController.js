@@ -2,18 +2,25 @@
 
     'use strict';
 
-    function NewTabController($scope, $state, $q) {
+    function NewTabController($scope, $state, $q, PouchDBService) {
 
         var that = this;
+        var db;
 
         const {dialog} = require('electron').remote;
         this.events = [];
+
+        $scope.latestFiles = [];
 
         /**
          * Initializes the new tab page
          */
         this.initialize = function () {
-            console.log('test');
+            // Initialize Database
+            PouchDBService.initialize('latestFiles').then((pouchdb) => {
+                db = pouchdb;
+                loadLatestFiles();
+            });
         };
 
 
@@ -27,7 +34,7 @@
                     properties: ['openFile', 'showHiddenFiles']
                 },
                 function (fileName) {
-                    that.openFile(fileName);
+                    that.openFile(fileName[0]);
                 }
             );
         };
@@ -37,7 +44,35 @@
          * @param path
          */
         this.openFile = function(path) {
+            db.put({
+                _id: Date.now() + path,
+                path: path,
+                time: Date.now()
+            }).then(function (result) {
+                loadLatestFiles();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
             alert(path);
+        };
+
+        /**
+         *
+         */
+        var loadLatestFiles = function() {
+            // fetch all latest Files
+            db.allDocs({
+                include_docs: true,
+                limit: 10,
+                descending: true
+            }).then(function (result) {
+                $scope.$apply(function () {
+                    $scope.latestFiles = result.rows;
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
         };
 
 
