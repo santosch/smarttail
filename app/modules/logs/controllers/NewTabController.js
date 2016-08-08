@@ -4,6 +4,9 @@
 
     function NewTabController($scope, $state, $q) {
 
+        var that = this;
+
+        const {dialog} = require('electron').remote;
         this.events = [];
 
         /**
@@ -18,7 +21,23 @@
          * opens a file select dialog
          */
         this.selectFile = function() {
-            alert('i\'m a teapot');
+                dialog.showOpenDialog({
+                    title: "Select Logfile",
+                    buttonLabel: "Load Logfile",
+                    properties: ['openFile', 'showHiddenFiles']
+                },
+                function (fileName) {
+                    that.openFile(fileName);
+                }
+            );
+        };
+
+        /**
+         * Loads a file
+         * @param path
+         */
+        this.openFile = function(path) {
+            alert(path);
         };
 
 
