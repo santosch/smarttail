@@ -12,6 +12,14 @@
 
         $scope.latestFiles = [];
 
+        // register dropping of files
+        document.ondragover = document.ondrop = (ev) => {
+            ev.preventDefault();
+        };
+        document.body.ondrop = (ev) => {
+            that.openFile(ev.dataTransfer.files[0].path);
+        };
+
         /**
          * Initializes the new tab page
          */
@@ -34,7 +42,9 @@
                     properties: ['openFile', 'showHiddenFiles']
                 },
                 function (fileName) {
-                    that.openFile(fileName[0]);
+                    if (fileName && fileName.length > 0) {
+                        that.openFile(fileName[0]);
+                    }
                 }
             );
         };
@@ -44,17 +54,19 @@
          * @param path
          */
         this.openFile = function(path) {
-            db.put({
-                _id: Date.now() + path,
-                path: path,
-                time: Date.now()
-            }).then(function (result) {
-                loadLatestFiles();
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-            alert(path);
+            if (path) {
+                db.put({
+                    _id: Date.now() + path,
+                    path: path,
+                    time: Date.now()
+                }).then(function (result) {
+                        loadLatestFiles();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                alert(path);
+            }
         };
 
         /**

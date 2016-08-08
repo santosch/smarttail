@@ -25,3 +25,21 @@ md-tabs.file-tabs md-tab-content {
     transform: scale(0.87); /* fuck you - who the hell created this, non-matching icons, genius*/
     transform-origin: left top;
 }
+.new-tab-page .dropcard {
+    display: block;
+    width: calc(100% - 16px); /* why the hell is this necessary? display: block should suffice */
+    margin: 0 8px 32px 8px;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.3;
+    transition: 0.3s opacity;
+}
+.new-tab-page .dropcard:hover,
+.new-tab-page .dropcard:active,
+.new-tab-page .dropcard:focus {
+    opacity: 1.0;
+}
+.new-tab-page .dropcard h1 {
+    color: #fff;
+    opacity: 0.8;
+}
